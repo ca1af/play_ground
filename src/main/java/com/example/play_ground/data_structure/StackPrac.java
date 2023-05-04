@@ -33,9 +33,9 @@ public class StackPrac {
             }
         }
 
-        private int peek(){
+        private void peek(){
             if (!isEmpty()){
-                return stackArr[top];
+                System.out.println(stackArr[top] + "Peek!");
             } else {
                 throw new IllegalArgumentException("empty!");
             }
