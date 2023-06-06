@@ -1,12 +1,9 @@
 package com.example.play_ground.springbatch;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.support.DefaultBatchConfiguration;
 import org.springframework.batch.core.job.builder.JobBuilder;
-import org.springframework.batch.core.observability.DefaultBatchJobObservationConvention;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -25,11 +22,12 @@ public class SimpleJobConfiguration  {
                 .build();
     }
     @Bean
-    public Step simpleStep1(JobRepository jobRepository, Tasklet testTasklet, PlatformTransactionManager platformTransactionManager){
+    public Step simpleStep1( JobRepository jobRepository, Tasklet testTasklet, PlatformTransactionManager platformTransactionManager){
         return new StepBuilder("simpleStep1", jobRepository)
                 .tasklet(testTasklet, platformTransactionManager).build();
     }
     @Bean
+
     public Tasklet testTasklet(){
         return ((contribution, chunkContext) -> {
             log.info(">>>>> This is Step1");
