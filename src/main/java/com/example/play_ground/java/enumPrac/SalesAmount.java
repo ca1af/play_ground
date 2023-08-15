@@ -18,6 +18,7 @@ public enum SalesAmount {
         return priceType;
     }
 
+
     public long calculate(long price){
         return expression.apply(price);
         // apply 함수는 @FunctionalInterface 어노테이션이 달려있는 Function 이하 녀석들에서 사용됨
